@@ -1,0 +1,48 @@
+import React from 'react';
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import FontIcon from 'material-ui/FontIcon';
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import * as routes from '../constants/routes';
+import { Link } from 'react-router-dom';
+
+export default class ToolbarExamplesSimple extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            logged: true,
+            value: 3,
+        };
+    }
+
+    handleChange = (event, logged) => {
+        this.setState({logged: logged});
+    };
+    
+    
+    render() {
+        return (
+            <Toolbar style={{backgroundColor: '#1E88E5'}}>
+                <ToolbarGroup>
+                    <ToolbarTitle text="ATHENA" />
+                    <ToolbarSeparator />
+                    <FontIcon className="muidocs-icon-custom-sort" />
+                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_IN}>Sign in</Link></RaisedButton>
+                    <IconMenu
+                        iconButtonElement={
+                            <IconButton touch={true}>
+                                <NavigationExpandMoreIcon />
+                            </IconButton>
+                        }
+                    >
+                    
+                    </IconMenu>
+                </ToolbarGroup>
+            </Toolbar>
+        );
+    }
+}

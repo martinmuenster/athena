@@ -15,7 +15,7 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth;
-const db = firebase.database();
+var db = firebase.database();
 const authUI = new firebaseUI.auth.AuthUI(firebase.auth());
 
 
