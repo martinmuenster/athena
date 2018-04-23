@@ -19,9 +19,9 @@ class SignInPage extends React.Component {
         'signInSuccess': function(user) {
           //console.log(db.db);
           //db.setdoCreateUser(user.uid, user.username, user.email);
-          db.db.ref('users/${user.uid}').push({
+          /*db.db.ref('users/${user.uid}').push({
               user.username
-          });
+          });*/
             
           if (self.props.onSignIn) {
             self.props.onSignIn(user);
