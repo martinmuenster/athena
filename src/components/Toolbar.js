@@ -22,16 +22,19 @@ export default class ToolbarExamplesSimple extends React.Component {
     handleChange = (event, logged) => {
         this.setState({logged: logged});
     };
-    
-    
+
     render() {
         return (
             <Toolbar style={{backgroundColor: '#1E88E5'}}>
                 <ToolbarGroup>
                     <ToolbarTitle text="ATHENA" />
                     <ToolbarSeparator />
+
                     <FontIcon className="muidocs-icon-custom-sort" />
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_IN}>Sign in</Link></RaisedButton>
+                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.LANDING}>Landing</Link></RaisedButton>
+                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.HOME}>Home</Link></RaisedButton>
+                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.ACCOUNT}>Account</Link></RaisedButton>
                     <IconMenu
                         iconButtonElement={
                             <IconButton touch={true}>

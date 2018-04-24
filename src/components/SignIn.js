@@ -5,6 +5,7 @@ class SignInPage extends React.Component {
     componentDidMount() {
     var self = this;
     console.log(auth.auth);
+    console.log(auth);
     var uiConfig = {
       
       'signInOptions': [
@@ -31,11 +32,9 @@ class SignInPage extends React.Component {
     render() {
         return (
             <div>
-            
-    <h1>Sign In</h1>
-            <div id="firebaseui-auth">
+                <div id="firebaseui-auth">
+                </div>
             </div>
-  </div>
         )
     }
   
