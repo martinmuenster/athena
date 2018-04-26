@@ -23,6 +23,9 @@ export const doPasswordReset = (email) =>
 export const doPasswordUpdate = (password) =>
     auth.currentUser.updatePassword(password);
 
+export const signOut = () =>
+    auth.signOut;
+
 export {
     auth,
     authUI

@@ -8,6 +8,7 @@ import Navigation from './Navigation';
 import LandingPage from './Landing';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
+import SignOutPage from './SignOut';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
@@ -34,6 +35,10 @@ const App = () =>
       <Route
         exact path={routes.SIGN_IN}
         component={() => <SignInPage />}
+      />
+      <Route
+        exact path={routes.SIGN_OUT}
+        component={() => <SignOutPage />}
       />
       <Route
         exact path={routes.PASSWORD_FORGET}

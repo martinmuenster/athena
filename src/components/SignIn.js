@@ -4,8 +4,6 @@ import { auth, db } from '../firebase';
 class SignInPage extends React.Component {
     componentDidMount() {
     var self = this;
-    console.log(auth.auth);
-    console.log(auth);
     var uiConfig = {
       
       'signInOptions': [

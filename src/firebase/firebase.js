@@ -16,11 +16,13 @@ if (!firebase.apps.length) {
 
 const auth = firebase.auth;
 var db = firebase.database();
+var storage = firebase.storage().ref();
 const authUI = new firebaseUI.auth.AuthUI(firebase.auth());
 
 
 export {
   auth,
   authUI,
-  db
+  db,
+  storage
 };

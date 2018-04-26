@@ -35,6 +35,7 @@ export default class ToolbarExamplesSimple extends React.Component {
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.LANDING}>Landing</Link></RaisedButton>
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.HOME}>Home</Link></RaisedButton>
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.ACCOUNT}>Account</Link></RaisedButton>
+                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_OUT}>Sign Out</Link></RaisedButton>
                     <IconMenu
                         iconButtonElement={
                             <IconButton touch={true}>
