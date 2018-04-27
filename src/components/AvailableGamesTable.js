@@ -108,9 +108,30 @@ export default class TableExampleComplex extends Component {
     
     componentDidMount() {
         var self = this;
-        db.gamesRef.once("value").then(snap => {
+        /*db.gamesRef.once("value").then(snap => {
             self.setState({gameData: snap.val()})
-        })
+        })*/
+        
+        db.gamesRef.on("value", function (snap) {
+            self.setState({gameData: snap.val()});
+        });
+        
+        /*var joinable = true;
+        db.ref("games/${gameID}").on('value').then(snap => {
+            var game = snap.val();
+            for (var participant in game.participants) {
+                if (participant === userID) {
+                    joinable = false;
+                }
+            }
+            if (game.numParticipants === game.participants.length) {
+                joinable = false;
+            }
+        });*/
+    }
+    
+    componentWillUnmount() {
+        db.gamesRef.off();
     }
 
 
