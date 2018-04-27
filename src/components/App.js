@@ -16,8 +16,24 @@ import AccountPage from './Account';
 import * as routes from '../constants/routes';
     
 import './App.css';
+    
+import { db } from '../firebase';
 
-const App = () =>
+class App extends React.Component {
+    constructor(props) {
+    super(props);
+    this.state = {user: {name: null, id: null}};
+    db.activateListeners();
+    console.log("wrbv");
+  }
+    
+  signInCallBack(signInInfo) {
+    this.state.user.name = signInInfo.displayName;
+    this.state.user.id = signInInfo.uid;
+      
+}
+  render() {
+      return(
   <Router>
     <div>
       <Navigation />
@@ -26,7 +42,7 @@ const App = () =>
 
       <Route
         exact path={routes.LANDING}
-        component={() => <LandingPage />}
+        component={() => <LandingPage username={this.state.user.name} />}
       />
       <Route
         exact path={routes.SIGN_UP}
@@ -34,7 +50,7 @@ const App = () =>
       />
       <Route
         exact path={routes.SIGN_IN}
-        component={() => <SignInPage />}
+        component={() => <SignInPage callBack={this.signInCallBack.bind(this)} />}
       />
       <Route
         exact path={routes.SIGN_OUT}
@@ -54,5 +70,7 @@ const App = () =>
       />
     </div>
   </Router>
-
+);
+  }
+}
 export default App;

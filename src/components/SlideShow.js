@@ -6,7 +6,6 @@ import "./SlideShow.css";
 
 
 
-
 class SimpleSlider extends React.Component {
     render() {
         const settings = {

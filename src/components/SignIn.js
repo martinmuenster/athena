@@ -3,6 +3,7 @@ import { auth, db } from '../firebase';
 
 class SignInPage extends React.Component {
     componentDidMount() {
+    
     var self = this;
     var uiConfig = {
       
@@ -16,8 +17,10 @@ class SignInPage extends React.Component {
         'callbacks': {
         'signInSuccess': function(user) {
           db.createUser(user.uid, user.displayName, user.email);  
-          if (self.props.onSignIn) {
-            self.props.onSignIn(user);
+            //console.log(db.getUser(user.uid));
+          if (self.props.callBack) {
+            self.props.callBack(user);
+            //db.addGame("12345", "tomorrow", "11:00", "2", "soccer", "here");
           }
           
           return false;
@@ -32,6 +35,7 @@ class SignInPage extends React.Component {
             <div>
                 <div id="firebaseui-auth">
                 </div>
+                
             </div>
         )
     }
