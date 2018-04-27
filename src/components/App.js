@@ -23,8 +23,6 @@ class App extends React.Component {
     constructor(props) {
     super(props);
     this.state = {user: {name: null, id: null}};
-    db.activateListeners();
-    console.log("wrbv");
   }
     
   signInCallBack(signInInfo) {
