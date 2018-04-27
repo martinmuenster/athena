@@ -2,11 +2,11 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Toolbar from './Toolbar.js'
 
-const Navigation = () =>
+const Navigation = (props) =>
     
   <div>
       <MuiThemeProvider>
-        <Toolbar/>
+        <Toolbar authUser={props.authUser}/>
       </MuiThemeProvider>
   </div>
 

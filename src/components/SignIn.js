@@ -17,10 +17,8 @@ class SignInPage extends React.Component {
         'callbacks': {
         'signInSuccess': function(user) {
           db.createUser(user.uid, user.displayName, user.email);  
-            //console.log(db.getUser(user.uid));
           if (self.props.callBack) {
             self.props.callBack(user);
-            //db.addGame("12345", "tomorrow", "11:00", "2", "soccer", "here");
           }
           
           return false;

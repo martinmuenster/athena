@@ -9,6 +9,8 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 import * as routes from '../constants/routes';
 import { Link } from 'react-router-dom';
 
+import { auth, db } from '../firebase';
+
 export default class ToolbarExamplesSimple extends React.Component {
 
     constructor(props) {
@@ -17,6 +19,7 @@ export default class ToolbarExamplesSimple extends React.Component {
             logged: true,
             value: 3,
         };
+        console.log(this.props.authUser);
     }
 
     handleChange = (event, logged) => {
@@ -31,11 +34,16 @@ export default class ToolbarExamplesSimple extends React.Component {
                     <ToolbarSeparator />
 
                     <FontIcon className="muidocs-icon-custom-sort" />
-                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_IN}>Sign in</Link></RaisedButton>
+                    { this.props.authUser
+                        ? <RaisedButton onClick={() => auth.signOut()}>Sign Out</RaisedButton> 
+                        : <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_IN}>Sign in</Link></RaisedButton>
+                    }
+                    
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.LANDING}>Landing</Link></RaisedButton>
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.HOME}>Home</Link></RaisedButton>
                     <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.ACCOUNT}>Account</Link></RaisedButton>
-                    <RaisedButton><Link style={{textDecoration: 'none'}}  to={routes.SIGN_OUT}>Sign Out</Link></RaisedButton>
+                    
+                    
                     <IconMenu
                         iconButtonElement={
                             <IconButton touch={true}>

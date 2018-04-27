@@ -17,24 +17,37 @@ import * as routes from '../constants/routes';
     
 import './App.css';
     
-import { db } from '../firebase';
+import { db, firebase } from '../firebase';
 
 class App extends React.Component {
     constructor(props) {
     super(props);
-    this.state = {user: {name: null, id: null}};
+    this.state = {user: {name: null, id: null}, authUser: null};
+  }
+    
+  componentDidMount() {
+    /*firebase.auth().onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState({authUser: authUser })
+        : this.setState({ authUser: null });
+    });*/
   }
     
   signInCallBack(signInInfo) {
-    this.state.user.name = signInInfo.displayName;
-    this.state.user.id = signInInfo.uid;
-      
-}
+    this.setState({user: {name: signInInfo.displayName, id: signInInfo.uid}})
+    //this.state.user.name = signInInfo.displayName;
+    //this.state.user.id = signInInfo.uid;
+  }
+    
+  signOutCallBack() {
+      this.setState({user: {name: null, id: null}})
+  }
+    
   render() {
       return(
   <Router>
     <div>
-      <Navigation />
+      <Navigation authUser={this.state.user.id}/>
 
       <hr/>
 
@@ -52,7 +65,7 @@ class App extends React.Component {
       />
       <Route
         exact path={routes.SIGN_OUT}
-        component={() => <SignOutPage />}
+        component={() => <SignOutPage callBack={this.signOutCallBack.bind(this)}/>}
       />
       <Route
         exact path={routes.PASSWORD_FORGET}

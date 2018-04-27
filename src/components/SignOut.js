@@ -6,6 +6,9 @@ class SignOutPage extends React.Component {
     var self = this;
     //auth.auth.signOut();
     auth.signOut();
+    if (self.props.callBack) {
+        self.props.callBack();
+    }
     }
     render() {
         return (
